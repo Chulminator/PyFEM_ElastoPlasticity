@@ -1,0 +1,25 @@
+*Title
+Patch3D_27_8
+
+*Mesh
+./Mesh/Patch3D/Patch3D_27_8
+
+*ConstitutiveLaw
+Solid
+ElastoPlasticity
+200000	0.3	250	0.2
+
+*LoadingStep
+100
+
+*BCFile
+BDC.BC_Patch3D
+
+*ResultDirectory
+./Result/result_Patch3D
+
+*PlasticModel
+PlasticModel.J2Plasticity
+
+*ReturnMappingMode
+EigenSpace

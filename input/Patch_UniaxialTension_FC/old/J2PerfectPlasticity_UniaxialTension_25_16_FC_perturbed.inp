@@ -1,0 +1,28 @@
+*Title
+J2PerfectPlasticity_UniaxialTension_25_16_FC_perturbed
+
+*ConstitutiveLaw
+Solid
+ElastoPlasticity
+200000.	0.3	250.
+
+*LoadingStep
+100
+
+*BCFile
+BDC.BC_J2_Patch_UniaxialTension_FC
+
+*Plane
+PlaneStrain	1.0
+
+*ResultDirectory
+./Result/result_J2Plasticity_UniaxialTension_FC
+
+*Mesh
+./Mesh/Patch/Patch_25_16_perturbed
+
+*PlasticModel
+PlasticModel.J2PerfectPlasticity
+
+*ReturnMappingMode
+EigenSpace

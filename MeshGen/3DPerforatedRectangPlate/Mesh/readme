@@ -1,0 +1,2 @@
+# to generate *.msh file from abaqus *.inp file
+meshio convert --input-format abaqus --output-format gmsh PerforatedRectangPlate.inp PerforatedRectangPlate.msh

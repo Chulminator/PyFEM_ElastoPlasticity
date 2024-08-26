@@ -1,0 +1,28 @@
+*Title
+Patch_UniaxialTension_J2_30_42_PE
+
+*ConstitutiveLaw
+Solid
+ElastoPlasticity
+200000.0	0.3	250.0	0.2
+
+*LoadingStep
+100
+
+*BCFile
+BDC.BC_Patch_UniaxialTension
+
+*Plane
+PlaneStrain	1.0
+
+*ResultDirectory
+./Result/result_Patch_J2_PE
+
+*Mesh
+./Mesh/Patch/Patch2D_30_42
+
+*PlasticModel
+PlasticModel.J2Plasticity
+
+*ReturnMappingMode
+EigenSpace

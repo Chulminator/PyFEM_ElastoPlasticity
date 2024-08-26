@@ -1,0 +1,7 @@
+Example to apply force: BC_Patch3D_ForceControl.py
+Example to apply stress: BC_Patch_ApplyStress.py
+Boundary condtion is defined for each problem.
+
+*.py name can be anything. However, the function name should be always same as
+"def ApplyBC(Fem, Node, Element):"
+

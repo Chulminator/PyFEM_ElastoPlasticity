@@ -1,0 +1,28 @@
+*Title
+J2PerfectPlasticity_UniaxialTension_FC
+
+*ConstitutiveLaw
+Solid
+ElastoPlasticity
+200000.	0.3	250.	0.2
+
+*LoadingStep
+50
+
+*BCFile
+BDC.BC_J2_Patch_UniaxialTension_FC
+
+*Plane
+PlaneStrain	1.0
+
+*ResultDirectory
+./Result/result_J2Plasticity_UniaxialTension_FC
+
+*Mesh
+./Mesh/Patch/Patch
+
+*PlasticModel
+PlasticModel.J2Plasticity
+
+*ReturnMappingMode
+EigenSpace
