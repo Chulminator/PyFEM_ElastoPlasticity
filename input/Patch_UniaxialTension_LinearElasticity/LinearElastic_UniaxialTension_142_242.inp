@@ -1,0 +1,25 @@
+*Title
+LinearElastic_UniaxialTension_142_242
+
+*Mesh
+./Mesh/Patch/Patch
+
+*ConstitutiveLaw
+Solid
+ElastoPlasticity
+200000	0.3
+
+*LoadingStep
+100
+
+*BCFile
+BDC.BC_Patch_UniaxialTension
+
+*Plane
+PlaneStress	1.0
+
+*ResultDirectory
+./Result/result_LinearElastic_UniaxialTension/142_242
+
+*PlasticModel
+PlasticModel.LinearElastic

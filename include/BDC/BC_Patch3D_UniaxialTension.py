@@ -17,6 +17,6 @@ def ApplyBC(Model):
             Node.BC_E[2] = 0.0
 
         if math.fabs(Node.Coord[2] - 1.0 ) < 1e-05:
-            Node.BC_E[2] = 0.015/Model.totalstep
+            Node.BC_E[2] = 0.003/Model.totalstep
         ##############################################
     return

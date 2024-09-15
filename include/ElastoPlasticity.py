@@ -201,13 +201,6 @@ def Solve(Model, Global_K):
             node.u[jj]  = u[ii*Dim + jj]
             node.du[jj] = du[ii*Dim + jj]
 
-    #print( F_total )
-    #print(F_int)
-    #print( u1 )
-    #print( u  )
-    #print( du[IndexBCN] )
-    #print( du )
-    #input("*"*10)
     return np.linalg.norm(F_total)**2/(1.+np.linalg.norm(F_ext[IndexBCN])**2)
 
 
@@ -624,9 +617,6 @@ class ConstitutiveLaw():
                 D = ddsdde
             else:
                 assert 0, "Dimension Check"
-        #print("\neps_e\n",eps_e)
-        #print("\nsigma\n",sigma)
-        #print("="*40)
 
         GPstate.eps_e   = eps_e
         GPstate.eps_p   = eps_p
@@ -710,12 +700,6 @@ class ConstitutiveLaw():
         YF = self.PlasticityModel.f(sigma1_tr, sigma2_tr, sigma3_tr, lamda) # yield surface
 
         if YF <= 0. or self.GlobalNRStep == 0:
-            #print(">> Elastic!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-            #print(sigma1_tr, sigma2_tr, sigma3_tr)
-            #print("\nVon mises\n",np.sqrt((1.0/2.0)*(np.abs(sigma1_tr-sigma2_tr)**2 + \
-                                                     #np.abs(sigma2_tr-sigma3_tr)**2 + \
-                                                     #np.abs(sigma3_tr-sigma1_tr)**2)))
-            # Update stress & strain
             sigma_tr_tensor = sigma1_tr*np.tensordot(k1,k1,axes=0)\
                             + sigma2_tr*np.tensordot(k2,k2,axes=0)
 
@@ -748,7 +732,6 @@ class ConstitutiveLaw():
             # Initialize variables
             eps_e_init_mag, eps_e_init_vec = np.linalg.eigh(eps_e_init_tensor[0:2,0:2])
             eps_e_init_mag, eps_e_init_vec = SortEig2D(eps_e_init_mag, eps_e_init_vec)
-            #print(eps_e_init_vec)
 
             k1 = eps_e_init_vec[:,0]
             k2 = eps_e_init_vec[:,1]
@@ -1359,10 +1342,6 @@ class ConstitutiveLaw():
 
         YF = self.PlasticityModel.f(p_tr, q_tr, lamda) # yield surface
 
-        #print("-*"*30)
-        #print("\ndeps\n",deps)
-        #print("\nepse\n",eps_e_init)
-        #print("\neps_e_tr\n",eps_e_tr)
 
         if YF <= 0. or self.GlobalNRStep == 0:
             sigma  = sigma_tr
@@ -1443,12 +1422,6 @@ class ConstitutiveLaw():
                 # Compute error
                 err = np.linalg.norm(dx)
 
-                #print("-*"*25)
-                #print("\neps_e_v, eps_e_s\n",x[0], x[1])
-                #print("\nres\n",res)
-                #print("\nerr\n",err)
-                #print("-*"*25)
-
                 if err < 1e-10:
                     break
 
@@ -1486,16 +1459,6 @@ class ConstitutiveLaw():
                 D = ddsdde
             else:
                 assert 0, "Dimension Check"
-            #print("\neps_e\n",eps_e)
-            #print("\nsigma\n",sigma)
-
-
-        #print("-*"*30)
-        #print("\ndeps\n",deps)
-        #print("\nepse\n",eps_e_init)
-        #print("\neps_e_tr\n",eps_e_tr)
-        #print("\neps_e\n",eps_e)
-        #print("\nsigma\n",sigma)
 
         GPstate.eps_e   = self.Tensor2Voigt(eps_e)
         GPstate.eps_p   = self.Tensor2Voigt(eps_p)
@@ -1504,8 +1467,6 @@ class ConstitutiveLaw():
         GPstate.stress  = self.Tensor2Voigt(sigma,'stress')
         GPstate.deps_e  = self.Tensor2Voigt(deps_e)
         GPstate.deps_p  = self.Tensor2Voigt(deps_p)
-
-        #print(GPstate.stress)
         GPstate.D      = D
         return
 
@@ -1729,36 +1690,11 @@ class ConstitutiveLaw():
 
                 # Compute error
                 err = np.linalg.norm(dx)
-
-                #############################################################
-                D_,V = np.linalg.eigh(eps_e_tr)
-                V   = ReconMat(V)
-                alp_tr, bet_tr, gam_tr = rotation_angles(V)
-
-
-
-
-                eps_e = np.array([[x[0], x[3], x[5]],
-                                [x[3], x[1], x[4]],
-                                [x[5], x[4], x[2]]])
-
-                D_,V = np.linalg.eigh(eps_e)
-                V   = ReconMat(V)
-                alp, bet, gam = rotation_angles(V)
-                print("ReturnMapping: ", ii)
-                print( alp/np.pi*180., bet/np.pi*180., gam/np.pi*180. )
-                print( alp_tr/np.pi*180., bet_tr/np.pi*180., gam_tr/np.pi*180. )
-                #print(V)
-                #print("V"*20)
-                #input("")
-                #############################################################
-
                 #print("\tNewton iter.",ii, ": err =", err)
 
                 if err < 1e-7:
                     #input("stop==")
                     break
-            print("*"*30)
 
             eps   = eps_e_init + eps_p_init + deps
             eps_e = np.array([[x[0], x[3], x[5]],
@@ -1791,9 +1727,6 @@ class ConstitutiveLaw():
                 D = ddsdde
             else:
                 assert 0, "Dimension Check"
-        #print("\neps_e\n",eps_e)
-        #print("\nsigma\n",sigma)
-        #print("="*40)
 
         GPstate.eps_e   = self.Tensor2Voigt(eps_e)
         GPstate.eps_p   = self.Tensor2Voigt(eps_p)

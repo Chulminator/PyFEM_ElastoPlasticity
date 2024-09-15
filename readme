@@ -22,16 +22,8 @@ Postprocessing: paraview
 
 
 
-What doesnt work
-plasticity force control
-
-
-
-
-
-Dependency:
-autograd
-https://anaconda.org/conda-forge/autograd
+Specific description is in my blog. 
+https://chulminator.github.io/posts/PyFEM/
 
 pygmsh
 conda install -c conda-forge python-gmsh
