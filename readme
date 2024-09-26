@@ -1,0 +1,28 @@
+Execution Example:
+1. 2D patch test - displacement control
+python3 MainElastoPlastic.py ./input/patch/Patch.inp
+
+Postprocessing: paraview or PostProcessing2D/Main.m
+
+2. 2D plate with Hole - displacement control
+python3 MainElastoPlastic.py ./input/PlateWithHole/PlateWithHole_113_93_plastic.inp
+
+Postprocessing: paraview or PostProcessing2D/Main.m
+
+3. 3D patch test - displacement control
+
+python3 MainElastoPlastic.py ./input/patch3D/Patch3D_27_8.inp
+
+Postprocessing: paraview
+
+4. 3D plate with Hole - displacement control
+python3 MainElastoPlastic.py ./input/PlateWithHole3D/PlateWithHole3D.inp
+
+Postprocessing: paraview
+
+
+Specific description is in my [blog](https://chulminator.github.io/posts/PyFEM/). 
+
+
+pygmsh
+conda install -c conda-forge python-gmsh

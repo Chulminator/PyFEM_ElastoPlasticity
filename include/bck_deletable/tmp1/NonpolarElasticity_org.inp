@@ -1,0 +1,17 @@
+*Title
+NonpolarElasticity
+
+*ResultDirectory
+./Result/result_NonpolarElasticity
+
+*Nodefile
+./mesh/NonpolarPoroelasticity/Poroelasticity_1210_1090.NODE
+
+*Elementfile
+./mesh/NonpolarPoroelasticity/Poroelasticity_1210_1090.ELEM
+
+*Elastic
+1.03+08	0.25	1.0
+
+*PLE
+0
