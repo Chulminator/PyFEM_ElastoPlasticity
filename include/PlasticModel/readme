@@ -1,6 +1,0 @@
- 
-Plastic constitutive model
-
-The file should have the form of *.py
-The class in each file should have name as "class MyPlasticity():"
-In the class, it should contain "def f():", "def df():", and "def df2():"
